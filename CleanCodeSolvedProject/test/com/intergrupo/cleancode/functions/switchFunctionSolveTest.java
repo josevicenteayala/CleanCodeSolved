@@ -9,6 +9,7 @@ class switchFunctionSolveTest {
 
 	@Test
 	void testEngineeringProjectCost() {
+		long milliseconds1 = System.currentTimeMillis();
 		Project engineeringProject = new EngineeringProjectImpl();
 		try {
 			System.out.println(switchFunctionSolve.projectCost(engineeringProject));
@@ -16,6 +17,8 @@ class switchFunctionSolveTest {
 		} catch (ProjectCostException e) {
 			e.printStackTrace();
 		}
+		long milliseconds2 = System.currentTimeMillis();
+		System.out.println("Milliseconds "+ (milliseconds2 - milliseconds1));		
 	}
 
 	@Test
