@@ -11,15 +11,15 @@ class TrafficLightFollowingTheYellowImplTest {
 	@Test
 	void testChangeTheState() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println("actual light "+trafficLightFollowingTheYellowImpl.actualState());
+			System.out.println("actual light "+trafficLightFollowingTheYellowImpl.currentState());
 			trafficLightFollowingTheYellowImpl.changeTheState();
-			assertNotNull("Should be an string",trafficLightFollowingTheYellowImpl.actualState());
+			assertNotNull("Should be an string",trafficLightFollowingTheYellowImpl.currentState());
 		}
 	}
 
 	@Test
 	void testActualState() {
-		assertNotNull("Should be an string ",trafficLightFollowingTheYellowImpl.actualState());
+		assertNotNull("Should be an string ",trafficLightFollowingTheYellowImpl.currentState());
 	}
 
 }

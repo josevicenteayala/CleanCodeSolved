@@ -6,5 +6,5 @@ public interface TrafficLight {
 	String FOLLOW_STATE = "GREEN";
 	
 	public void changeTheState();
-	public String actualState();
+	public String currentState();
 }

@@ -11,15 +11,15 @@ class TrafficLightTest {
 	@Test
 	void testChangeTheState() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println("actual light "+trafficLight.actualState());
+			System.out.println("actual light "+trafficLight.currentState());
 			trafficLight.changeTheState();
-			assertNotNull("Should be an string",trafficLight.actualState());
+			assertNotNull("Should be an string",trafficLight.currentState());
 		}
 	}
 
 	@Test
 	void testActualState() {
-		assertNotNull("Should be an string ",trafficLight.actualState());
+		assertNotNull("Should be an string ",trafficLight.currentState());
 	}
 
 }

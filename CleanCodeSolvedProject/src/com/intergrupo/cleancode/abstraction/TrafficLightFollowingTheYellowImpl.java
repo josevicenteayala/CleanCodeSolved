@@ -10,8 +10,8 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 	}
 
 	@Override
-	public String actualState() {
-		return actualState.actualState();
+	public String currentState() {
+		return actualState.currentState();
 	}	
 	
 	private class StopState implements TrafficLight{
@@ -19,14 +19,14 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 		
 		@Override
 		public void changeTheState() {
-			previousState = actualState.actualState();
+			previousState = actualState.currentState();
 			alertState = new AlertState();
 			actualState = alertState;
 			sleep();
 		}
 
 		@Override
-		public String actualState() {
+		public String currentState() {
 			return STOP_STATE;
 		}
 		
@@ -49,7 +49,7 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 		}
 
 		@Override
-		public String actualState() {
+		public String currentState() {
 			return ALERT_STATE;
 		}
 		
@@ -67,7 +67,7 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 		}
 
 		@Override
-		public String actualState() {
+		public String currentState() {
 			return FOLLOW_STATE;
 		}
 		
