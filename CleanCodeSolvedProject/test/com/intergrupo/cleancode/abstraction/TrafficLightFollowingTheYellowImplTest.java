@@ -9,16 +9,16 @@ class TrafficLightFollowingTheYellowImplTest {
 	private TrafficLightFollowingTheYellowImpl trafficLightFollowingTheYellowImpl = new TrafficLightFollowingTheYellowImpl();
 	
 	@Test
-	void testChangeTheState() {
+	void testChangeState() {
 		for (int i = 0; i < 10; i++) {
 			System.out.println("actual light "+trafficLightFollowingTheYellowImpl.currentState());
-			trafficLightFollowingTheYellowImpl.changeTheState();
+			trafficLightFollowingTheYellowImpl.changeState();
 			assertNotNull("Should be an string",trafficLightFollowingTheYellowImpl.currentState());
 		}
 	}
 
 	@Test
-	void testActualState() {
+	void testCurrentState() {
 		assertNotNull("Should be an string ",trafficLightFollowingTheYellowImpl.currentState());
 	}
 

@@ -5,6 +5,6 @@ public interface TrafficLight {
 	String ALERT_STATE = "YELLOW";
 	String FOLLOW_STATE = "GREEN";
 	
-	public void changeTheState();
+	public void changeState();
 	public String currentState();
 }

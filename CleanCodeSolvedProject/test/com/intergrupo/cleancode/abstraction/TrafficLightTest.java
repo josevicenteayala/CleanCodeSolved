@@ -9,16 +9,16 @@ class TrafficLightTest {
 	private TrafficLight trafficLight = new TrafficLightImpl();
 	
 	@Test
-	void testChangeTheState() {
+	void testChangeState() {
 		for (int i = 0; i < 10; i++) {
 			System.out.println("actual light "+trafficLight.currentState());
-			trafficLight.changeTheState();
+			trafficLight.changeState();
 			assertNotNull("Should be an string",trafficLight.currentState());
 		}
 	}
 
 	@Test
-	void testActualState() {
+	void testCurrentState() {
 		assertNotNull("Should be an string ",trafficLight.currentState());
 	}
 

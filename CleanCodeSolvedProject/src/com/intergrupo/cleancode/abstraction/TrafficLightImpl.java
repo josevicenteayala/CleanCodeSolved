@@ -4,8 +4,8 @@ public class TrafficLightImpl implements TrafficLight {
 	private TrafficLight actualState = new StopState();
 	
 	@Override
-	public void changeTheState() {
-		actualState.changeTheState();
+	public void changeState() {
+		actualState.changeState();
 	}
 
 	@Override
@@ -17,7 +17,7 @@ public class TrafficLightImpl implements TrafficLight {
 		private TrafficLight alertState;
 		
 		@Override
-		public void changeTheState() {
+		public void changeState() {
 			alertState = new AlertState();
 			actualState = alertState;
 			sleep();
@@ -34,7 +34,7 @@ public class TrafficLightImpl implements TrafficLight {
 		private TrafficLight followState;
 		
 		@Override
-		public void changeTheState() {
+		public void changeState() {
 			followState = new FollowState();
 			actualState = followState;
 			sleep();
@@ -52,7 +52,7 @@ public class TrafficLightImpl implements TrafficLight {
 		private TrafficLight stopState;
 		
 		@Override
-		public void changeTheState() {
+		public void changeState() {
 			stopState = new StopState();
 			actualState = stopState;
 			sleep();
