@@ -15,13 +15,11 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 	}	
 	
 	private class StopState implements TrafficLight{
-		private TrafficLight alertState;
 		
 		@Override
 		public void changeState() {
 			previousState = actualState.currentState();
-			alertState = new AlertState();
-			actualState = alertState;
+			actualState = new AlertState();
 			sleep();
 		}
 
@@ -37,7 +35,7 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 		
 		@Override
 		public void changeState() {
-			if(STOP_STATE.equals(previousState)) {
+			if (STOP_STATE.equals(previousState)) {
 				nextState = new FollowState();
 				actualState = nextState;
 				sleep();	
@@ -57,12 +55,10 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 	
 	private class FollowState implements TrafficLight{
 		
-		private TrafficLight alertState;
-		
 		@Override
 		public void changeState() {
-			alertState = new AlertState();
-			actualState = alertState;
+			previousState = actualState.currentState();
+			actualState = new AlertState();
 			sleep();
 		}
 
@@ -78,6 +74,13 @@ public class TrafficLightFollowingTheYellowImpl implements TrafficLight {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 		}
-	}	
-	
+	}
+
+	public static void main(String[] args) {
+		TrafficLightFollowingTheYellowImpl trafficLightFollowingTheYellowImpl = new TrafficLightFollowingTheYellowImpl();
+		for (int i = 0; i < 10; i++) {
+			System.out.println("current light "+trafficLightFollowingTheYellowImpl.currentState());
+			trafficLightFollowingTheYellowImpl.changeState();
+		}
+	}
 }
