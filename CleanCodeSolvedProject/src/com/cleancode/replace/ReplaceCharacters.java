@@ -2,6 +2,9 @@ package com.cleancode.replace;
 
 import java.util.Objects;
 
+/**
+ * Write a Java program to replace all occurrences of a particular character with another one, avoiding doing loops directly.
+ * */
 public class ReplaceCharacters {
 
     /**
