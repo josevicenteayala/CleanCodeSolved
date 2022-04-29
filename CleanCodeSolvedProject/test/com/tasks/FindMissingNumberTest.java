@@ -4,15 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FindMissingNumberTest {
 
-    private static final int POSITION_0 = 0;
-    private static final int POSITION_98 = 98;
-    private static final int POSITION_59 = 59;
+    private static final int POSITION_1 = 1;
+    private static final int POSITION_97 = 97;
+    private static final int POSITION_60 = 60;
     private FindMissingNumber findMissingNumber;
 
     @BeforeEach
@@ -23,7 +24,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberWithListUntil100AndMissingNumber60() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_59);
+        list.remove(POSITION_60);
         int missingNumber = findMissingNumber.findMissingNumber(list, 100);
         assertEquals(60,missingNumber);
     }
@@ -31,7 +32,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberEnhanceUntil100AndMissingNumber60() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_59);
+        list.remove(POSITION_60);
         int missingNumberEnhance = findMissingNumber.findMissingNumberEnhance(list);
         assertEquals(60,missingNumberEnhance);
     }
@@ -39,7 +40,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberWithListUntil100AndMissingNumber99() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_98);
+        list.remove(POSITION_97);
         int missingNumber = findMissingNumber.findMissingNumber(list,100);
         assertEquals(99,missingNumber);
     }
@@ -47,7 +48,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberEnhanceUntil100AndMissingNumber99() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_98);
+        list.remove(POSITION_97);
         int missingNumberEnhance = findMissingNumber.findMissingNumberEnhance(list);
         assertEquals(99,missingNumberEnhance);
     }
@@ -55,7 +56,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberWithListUntil100AndMissingNumber1() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_0);
+        list.remove(POSITION_1);
         int missingNumber = findMissingNumber.findMissingNumber(list,100);
         assertEquals(1,missingNumber);
     }
@@ -63,7 +64,7 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumberEnhanceUntil100AndMissingNumber1() {
         List<Integer> list = createOrdinalList(100);
-        list.remove(POSITION_0);
+        list.remove(POSITION_1);
         int missingNumberEnhance = findMissingNumber.findMissingNumberEnhance(list);
         assertEquals(1,missingNumberEnhance);
     }
@@ -92,7 +93,7 @@ class FindMissingNumberTest {
         List<Integer> list = createOrdinalList(100000000);
         long currentTimeMillis2 = System.currentTimeMillis();
         System.out.println("Create list effort " + (currentTimeMillis2-currentTimeMillis));
-        list.remove(POSITION_0);
+        list.remove(POSITION_1);
         long currentTimeMillis3 = System.currentTimeMillis();
         int missingNumber = findMissingNumber.findMissingNumber(list,100);
         assertEquals(1,missingNumber);
@@ -124,7 +125,7 @@ class FindMissingNumberTest {
         List<Integer> list = createOrdinalList(100000000);
         long currentTimeMillis2 = System.currentTimeMillis();
         System.out.println("Create list effort " + (currentTimeMillis2-currentTimeMillis));
-        list.remove(POSITION_0);
+        list.remove(POSITION_1);
         long currentTimeMillis3 = System.currentTimeMillis();
         int missingNumberEnhance = findMissingNumber.findMissingNumberEnhance(list);
         assertEquals(1,missingNumberEnhance);
@@ -134,9 +135,63 @@ class FindMissingNumberTest {
 
     private List<Integer> createOrdinalList(int numberOfElements) {
         List<Integer> list = new ArrayList<>();
-        for(int i = 1; i <= numberOfElements;i++) {
+        for(int i = 0; i <= numberOfElements;i++) {
             list.add(i);
         }
         return list;
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsWithNumbersGraterThanLength(){
+        Integer[] numbers = {50,10,1};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(0, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsWithNumbersSizeGraterThan104(){
+        List<Integer> ordinalList = createOrdinalList(105);
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(ordinalList);
+        assertEquals(0, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsMissingNumber1(){
+        Integer[] numbers = {0};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(1, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsMissingNumber2(){
+        Integer[] numbers = {3,0,1};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(2, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsMissingNumber8(){
+        Integer[] numbers = {9,6,4,2,3,5,7,0,1};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(8, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsMissingNumber3(){
+        Integer[] numbers = {0,2,1};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(3, missingNumber);
+    }
+
+    @Test
+    void findMissingNumberWithConstraintsWithEmptyList(){
+        Integer[] numbers = {};
+        int missingNumber = findMissingNumber.findMissingNumberWithConstraints(Arrays.asList(numbers));
+        assertEquals(0, missingNumber);
+    }
+
+    @Test
+    void missingNumber(){
+
     }
 }
